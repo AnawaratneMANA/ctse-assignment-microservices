@@ -1,5 +1,4 @@
 package com.ctse.assignment.controller;
-
 import com.ctse.assignment.model.File;
 import com.ctse.assignment.repository.impl.FileRepositoryImpl;
 import com.ctse.assignment.service.BlobFileUploadService;
@@ -14,6 +13,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @RestController
@@ -29,13 +30,14 @@ public class FileController {
 
     @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/upload")
-    public String uploadFile(MultipartFile file){
+    public ResponseEntity<?> uploadFile(MultipartFile file){
         log.info("Filename: " + file.getOriginalFilename());
         log.info("Size: " + file.getSize());
         log.info("Content Type : " + file.getContentType());
         String destinationFilename = "./uploads/" + file.getOriginalFilename() + UUID.randomUUID();
         // Cache the file locally.
         String response;
+        int meta_response;
         try {
             Files.copy(
                     file.getInputStream(),
@@ -45,10 +47,30 @@ public class FileController {
 
             // Upload the file to the server.
             response = blobFileUploadService.storeFile(file.getOriginalFilename(),file.getInputStream(), file.getSize());
+
+            //Creeate a new file instance for the meta.
+            File filemeta = new File();
+
+            //Add the meta information to the file object.
+            double file_size = file.getSize()/1024;
+            filemeta.setFile_size(String.valueOf(file_size) + "kb");
+            filemeta.setName(file.getOriginalFilename());
+            filemeta.setFile_url("https://ctsestorageaccount.blob.core.windows.net/filecontainer/" + file.getOriginalFilename());
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            filemeta.setDate(dtf.format(now));
+
+            meta_response = fileRepository.saveFileData(filemeta);
+            if (meta_response == 1){
+                return new ResponseEntity<File>(filemeta, HttpStatus.OK);
+            } else if (meta_response == 0){
+                return new ResponseEntity<>("Error inserting the record!", HttpStatus.OK);
+            }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return new ResponseEntity<>("There's IO exception while inserting!", HttpStatus.NOT_FOUND);
         }
-        return  destinationFilename + "Has been saved!" + " and " + response;
+        return null;
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
