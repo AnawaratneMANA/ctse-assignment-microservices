@@ -10,7 +10,7 @@ public class FileMapper implements RowMapper<File> {
     @Override
     public File mapRow(ResultSet resultSet, int i) throws SQLException {
         File file = new File();
-        file.setFile_id(resultSet.getLong("file_id"));
+        file.setFile_id(resultSet.getString("file_id"));
         file.setName(resultSet.getString("name"));
         file.setCreate_date(resultSet.getString("created_date"));
         file.setFile_size(resultSet.getString("file_size"));

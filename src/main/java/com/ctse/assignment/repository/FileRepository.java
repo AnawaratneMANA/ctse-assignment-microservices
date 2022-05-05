@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface FileRepository {
-    String saveFileData(@RequestBody File file);
+    Integer saveFileData(@RequestBody File file);
     File getFile(String file_id);
     List<File> getFiles();
     String getFileUrl(String file_id);
