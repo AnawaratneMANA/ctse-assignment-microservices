@@ -4,6 +4,7 @@ import com.ctse.assignment.repository.impl.FileRepositoryImpl;
 import com.ctse.assignment.service.BlobFileUploadService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -77,6 +79,17 @@ public class FileController {
     @GetMapping("/health")
     public String health_check(){
         return "Web server is running";
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @GetMapping("/get")
+    public ResponseEntity<?> getAllFiles(){
+        List<File> files = fileRepository.getFiles();
+        if (files.size() > 0){
+            return new ResponseEntity<>(files, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No files in the database or error retrieving files!", HttpStatus.NOT_FOUND);
+        }
     }
 
 }

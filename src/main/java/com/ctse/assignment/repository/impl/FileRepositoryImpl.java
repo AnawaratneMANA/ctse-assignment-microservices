@@ -2,6 +2,7 @@ package com.ctse.assignment.repository.impl;
 import com.ctse.assignment.model.File;
 import com.ctse.assignment.repository.FileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -32,7 +33,7 @@ public class FileRepositoryImpl implements FileRepository {
 
     @Override
     public List<File> getFiles() {
-        return null;
+        return jdbcTemplate.query("SELECT * from file", BeanPropertyRowMapper.newInstance(File.class));
     }
 
     @Override
