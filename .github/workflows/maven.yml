@@ -22,6 +22,19 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
+
+    - name: docker build
+      run: docker build -t ctse-assignment-microservices :'${{github.sha}}' .
+
+    - name: docker login
+      run: docker login --username '${{secrets.DOCKER_LOGIN}}' --password '${{secrets.DOCKER_PASSWORD}}'
+
+    - name: push docker image
+      run: docker push '${{secrets.DOCKER_LOGIN}}'/ctse-assignment-microservices:'${{github.sha}}'
+
+
+
+
             
           
       

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ctse-assignment-microservices
+spec:
+  selector:
+    app: ctse-assignment-microservices
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 80
