@@ -79,17 +79,4 @@ public class FileController {
         return "Web server is running";
     }
 
-
-    @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping("/file")
-    public ResponseEntity<?> insertFile(@RequestBody File file){
-        System.out.println(file.getDate());
-        int response = fileRepository.saveFileData(file);
-        if (response == 1){
-            return new ResponseEntity<File>(file, HttpStatus.OK);
-        } else if (response == 0){
-            return new ResponseEntity<>("Error inserting the record!", HttpStatus.OK);
-        }
-        return null;
-    }
 }
