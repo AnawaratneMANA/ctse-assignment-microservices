@@ -15,8 +15,8 @@ public class File {
     @Column (name = "name")
     private String name;
 
-    @Column (name = "created_date")
-    private String create_date;
+    @Column (name = "date")
+    private String date;
 
     @Column (name = "file_size")
     private String file_size;
@@ -42,12 +42,12 @@ public class File {
         this.name = name;
     }
 
-    public String getCreate_date() {
-        return create_date;
+    public String getDate() {
+        return date;
     }
 
-    public void setCreate_date(String create_date) {
-        this.create_date = create_date;
+    public void setDate(String create_date) {
+        this.date = create_date;
     }
 
     public String getFile_size() {

@@ -1,7 +1,6 @@
 package com.ctse.assignment.controller;
 
 import com.ctse.assignment.model.File;
-import com.ctse.assignment.repository.FileRepository;
 import com.ctse.assignment.repository.impl.FileRepositoryImpl;
 import com.ctse.assignment.service.BlobFileUploadService;
 import lombok.RequiredArgsConstructor;
@@ -62,7 +61,7 @@ public class FileController {
     @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/file")
     public ResponseEntity<?> insertFile(@RequestBody File file){
-        System.out.println(file.getCreate_date());
+        System.out.println(file.getDate());
         int response = fileRepository.saveFileData(file);
         if (response == 1){
             return new ResponseEntity<File>(file, HttpStatus.OK);

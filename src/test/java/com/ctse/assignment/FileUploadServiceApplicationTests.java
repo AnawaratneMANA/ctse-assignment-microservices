@@ -20,7 +20,7 @@ class FileUploadServiceApplicationTests {
 		file.setFile_id("1");
 		file.setName("sample1");
 		file.setFile_size("sample");
-		file.setCreate_date("sample");
+		file.setDate("sample");
 		file.setFile_url("sample");
 		int response = fileRepository.saveFileData(file);
 		System.out.println(response);

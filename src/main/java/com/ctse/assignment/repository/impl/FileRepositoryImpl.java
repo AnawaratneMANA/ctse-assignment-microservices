@@ -17,7 +17,7 @@ public class FileRepositoryImpl implements FileRepository {
         int response;
         try {
             response = jdbcTemplate.update("INSERT INTO file (file_id, name, created_date, file_size, file_url) VALUES(?,?,?,?,?)",
-                    new Object[] {file.getFile_id(), file.getName(), file.getCreate_date(), file.getFile_size(), file.getFile_url()});
+                    new Object[] {file.getFile_id(), file.getName(), file.getDate(), file.getFile_size(), file.getFile_url()});
         } catch (Exception e){
             System.out.println(e);
             return 0;
