@@ -24,7 +24,7 @@ jobs:
       run: mvn clean install
 
     - name: docker build
-      run: docker build -t ctse-assignment-microservices:'${{github.sha}}' .
+      run: docker build -t '${{secrets.DOCKER_LOGIN}}'/ctse-assignment-microservices:'${{github.sha}}' .
 
     - name: docker login
       run: docker login --username '${{secrets.DOCKER_LOGIN}}' --password '${{secrets.DOCKER_PASSWORD}}'
