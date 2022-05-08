@@ -12,7 +12,7 @@ spec:
         app: ctse-assignment-microservices
     spec:
       containers:
-        - name: githubactions-aks-demo
+        - name: ctse-assignment-microservices
           image: nirmith99/ctse-assignment-microservices
           resources:
             limits:
