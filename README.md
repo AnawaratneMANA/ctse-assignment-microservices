@@ -1,13 +1,16 @@
 # CTSE - Assignment 3 - Microservices - File Upload Service
 
 ![GitHub Logo](microservice-cover.png)
+
 Swagger documentation of the file upload service.
 
 ![GitHub Logo](d-2.png)
+
 High Level system overview diagram.
 
 ![GitHub Logo](d-1.png)
-High Level function overveiw diagram.
+
+High Level function overview diagram.
 
 
 ## About
