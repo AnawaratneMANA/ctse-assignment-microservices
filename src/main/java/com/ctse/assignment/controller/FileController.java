@@ -30,7 +30,7 @@ public class FileController {
 
     private final BlobFileUploadService blobFileUploadService;
 
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(MultipartFile file){
         log.info("Filename: " + file.getOriginalFilename());
@@ -75,7 +75,6 @@ public class FileController {
         return null;
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/health")
     public String health_check(){
         return "Web server is running";
