@@ -12,11 +12,11 @@ spec:
         app: ctse-assignment-microservices
     spec:
       containers:
-        - name: githubactions-aks-demo
+        - name: ctse-assignment-microservices
           image: nirmith99/ctse-assignment-microservices
           resources:
             limits:
-              memory: "128Mi"
+              memory: "512Mi"
               cpu: "500m"
           ports:
             - containerPort: 8080

@@ -1,5 +1,5 @@
 package com.ctse.assignment.model;
-
+import com.ctse.assignment.config.GenerateId;
 import javax.persistence.*;
 
 @Entity
@@ -10,13 +10,13 @@ public class File {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long file_id;
+    private String file_id = GenerateId.generateId();
 
     @Column (name = "name")
     private String name;
 
-    @Column (name = "created_date")
-    private String create_date;
+    @Column (name = "date")
+    private String date;
 
     @Column (name = "file_size")
     private String file_size;
@@ -26,11 +26,11 @@ public class File {
 
     // Getters and Setters for the attributes.
 
-    public long getFile_id() {
+    public String getFile_id() {
         return file_id;
     }
 
-    public void setFile_id(long file_id) {
+    public void setFile_id(String file_id) {
         this.file_id = file_id;
     }
 
@@ -42,12 +42,12 @@ public class File {
         this.name = name;
     }
 
-    public String getCreate_date() {
-        return create_date;
+    public String getDate() {
+        return date;
     }
 
-    public void setCreate_date(String create_date) {
-        this.create_date = create_date;
+    public void setDate(String create_date) {
+        this.date = create_date;
     }
 
     public String getFile_size() {
