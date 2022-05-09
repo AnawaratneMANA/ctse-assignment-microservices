@@ -20,7 +20,7 @@ public class FileController {
 
     private final BlobFileUploadService blobFileUploadService;
 
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @PostMapping("/upload")
     public String uploadFile(MultipartFile file){
         log.info("Filename: " + file.getOriginalFilename());
@@ -44,7 +44,6 @@ public class FileController {
         return  destinationFilename + "Has been saved!" + " and " + response;
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/health")
     public String health_check(){
         return "Web server is running";
