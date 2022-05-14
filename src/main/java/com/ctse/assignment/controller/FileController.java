@@ -70,7 +70,7 @@ public class FileController {
                 return new ResponseEntity<>("Error inserting the record!", HttpStatus.OK);
             }
         } catch (IOException e) {
-            return new ResponseEntity<>("There's IO exception while inserting!", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("There's IO exception while inserting! " + e, HttpStatus.NOT_FOUND);
         }
         return null;
     }
