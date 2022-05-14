@@ -5,9 +5,7 @@
 Swagger documentation of the file upload service.
 
 <p align="center">
-  <img 
-    width="701"
-    height="441"
+  <img
     src="d-2.png"
   >
 </p>
@@ -15,9 +13,7 @@ Swagger documentation of the file upload service.
 High Level system overview diagram.
 
 <p align="center">
-  <img 
-    width="1096"
-    height="542"
+  <img
     src="d-1.png"
   >
 </p>
