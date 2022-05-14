@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,6 +34,14 @@ public class FileController {
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(MultipartFile file){
+
+        // Create a folder if not exist.
+        try{
+            Files.createDirectories(Paths.get("./uploads/"));
+        } catch(IOException e){
+            return new ResponseEntity<>("There's IO exception while creating the folder! " + e, HttpStatus.NOT_FOUND);
+        }
+
         log.info("Filename: " + file.getOriginalFilename());
         log.info("Size: " + file.getSize());
         log.info("Content Type : " + file.getContentType());
