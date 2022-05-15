@@ -35,4 +35,10 @@ class FileUploadServiceApplicationTests {
 		boolean response = blobFileUploadService.deleteFiles("database_creds.txt");
 		System.out.println(response);
 	}
+
+	@Test
+	public void testing_file_get_by_id(){
+		File file = fileRepository.getFile("8fbafca0-4007-4359-a345-57ee4a9b06e4");
+		System.out.println(file.getName());
+	}
 }

@@ -16,6 +16,5 @@ public class FileMapper implements RowMapper<File> {
         file.setFile_size(resultSet.getString("file_size"));
         file.setFile_url(resultSet.getString("file_url"));
         return file;
-
     }
 }
