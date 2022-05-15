@@ -117,4 +117,14 @@ public class FileController {
         }
     }
 
+    @GetMapping("/get/{fileid}")
+    public ResponseEntity<?> getFile(@PathVariable("fileid") String fileid){
+        File file = fileRepository.getFile(fileid);
+        if(file != null){
+            return new ResponseEntity<>(file, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No such file!", HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
