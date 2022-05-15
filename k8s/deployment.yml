@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: githubactions-aks-demo
+spec:
+  selector:
+    matchLabels:
+      app: ctse-assignment-microservices
+  template:
+    metadata:
+      labels:
+        app: ctse-assignment-microservices
+    spec:
+      containers:
+        - name: ctse-assignment-microservices
+          image: nirmith99/ctse-assignment-microservices
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080

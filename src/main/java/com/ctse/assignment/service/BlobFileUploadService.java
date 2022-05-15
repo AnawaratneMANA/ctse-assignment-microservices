@@ -1,5 +1,4 @@
 package com.ctse.assignment.service;
-
 import com.azure.storage.blob.BlobClient;
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobContainerClientBuilder;
@@ -7,7 +6,6 @@ import com.ctse.assignment.util.AzureBlobProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import java.io.InputStream;
 
 @Service
