@@ -39,4 +39,18 @@ public class BlobFileUploadService {
         return "File uploaded to the Azure storage";
     }
 
+    // Delete files from azure blob storage.
+    public boolean deleteFiles(String filename){
+        log.info("Azure store file BEGIN {}", filename);
+        BlobClient client = containerClient().getBlobClient(filename);
+        if(client.exists()){
+            log.warn("The file is already located in azure");
+            client.delete();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 }

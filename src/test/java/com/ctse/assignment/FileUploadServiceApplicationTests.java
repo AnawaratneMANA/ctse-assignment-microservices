@@ -1,6 +1,7 @@
 package com.ctse.assignment;
 import com.ctse.assignment.model.File;
 import com.ctse.assignment.repository.impl.FileRepositoryImpl;
+import com.ctse.assignment.service.BlobFileUploadService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ class FileUploadServiceApplicationTests {
 	@Autowired
 	private FileRepositoryImpl fileRepository;
 
+	@Autowired
+	private BlobFileUploadService blobFileUploadService;
+
 	@Test
 	public void testing_file_data_insertion(){
 		File file = new File();
@@ -23,6 +27,24 @@ class FileUploadServiceApplicationTests {
 		file.setDate("sample");
 		file.setFile_url("sample");
 		int response = fileRepository.saveFileData(file);
+		System.out.println(response);
+	}
+
+	@Test
+	public void testing_file_delete(){
+		boolean response = blobFileUploadService.deleteFiles("database_creds.txt");
+		System.out.println(response);
+	}
+
+	@Test
+	public void testing_file_get_by_id(){
+		File file = fileRepository.getFile("8fbafca0-4007-4359-a345-57ee4a9b06e4");
+		System.out.println(file.getName());
+	}
+
+	@Test
+	public void testing_delete_filemeta(){
+		int response = fileRepository.deleteFile("1");
 		System.out.println(response);
 	}
 }

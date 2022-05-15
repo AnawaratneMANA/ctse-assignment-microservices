@@ -1,4 +1,5 @@
 package com.ctse.assignment.repository.impl;
+import com.ctse.assignment.mappers.FileMapper;
 import com.ctse.assignment.model.File;
 import com.ctse.assignment.repository.FileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,9 @@ public class FileRepositoryImpl implements FileRepository {
 
     @Override
     public File getFile(String file_id) {
-        return null;
+        String sql = "SELECT * FROM file WHERE file_id=?";
+        File file = jdbcTemplate.queryForObject(sql, new Object[]{file_id}, new FileMapper());
+        return file;
     }
 
     @Override
@@ -39,5 +42,12 @@ public class FileRepositoryImpl implements FileRepository {
     @Override
     public String getFileUrl(String file_id) {
         return null;
+    }
+
+    @Override
+    public int deleteFile(String file_id) {
+        String sql = "DELETE FROM file WHERE file_id=?";
+        int response = jdbcTemplate.update(sql, file_id);
+        return response;
     }
 }

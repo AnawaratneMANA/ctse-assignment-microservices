@@ -4,11 +4,19 @@
 
 Swagger documentation of the file upload service.
 
-![GitHub Logo](d-2.png)
+<p align="center">
+  <img
+    src="d-2.png"
+  >
+</p>
 
 High Level system overview diagram.
 
-![GitHub Logo](d-1.png)
+<p align="center">
+  <img
+    src="d-1.png"
+  >
+</p>
 
 High Level function overview diagram.
 
@@ -114,6 +122,8 @@ Copy paste the entire ``json`` file to the GitHub secret with the key ``AZURE_CR
         action: deploy
 ```
 _Complete code is given in the provided maven.yml file_
+
+
 
 
 
