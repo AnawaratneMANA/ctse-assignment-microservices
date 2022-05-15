@@ -100,4 +100,21 @@ public class FileController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping("/delete/{fileid}")
+    public ResponseEntity<?> deleteFile(@PathVariable("fileid") String fileid){
+        // GET file name (Using the get file by id method)
+        File file = fileRepository.getFile(fileid);
+        // Delete the actual file from the storage account.
+        boolean delete_status = blobFileUploadService.deleteFiles(file.getName());
+        // Delete the file meta from the SQL database.
+        int delete_status_meta = fileRepository.deleteFile(file.getFile_id());
+        // Response to back.
+        if(delete_status){
+            return new ResponseEntity<>(file, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Error in file deletion!", HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
