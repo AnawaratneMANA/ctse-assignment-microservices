@@ -41,4 +41,10 @@ class FileUploadServiceApplicationTests {
 		File file = fileRepository.getFile("8fbafca0-4007-4359-a345-57ee4a9b06e4");
 		System.out.println(file.getName());
 	}
+
+	@Test
+	public void testing_delete_filemeta(){
+		int response = fileRepository.deleteFile("1");
+		System.out.println(response);
+	}
 }

@@ -12,5 +12,5 @@ public interface FileRepository {
     File getFile(String file_id);
     List<File> getFiles();
     String getFileUrl(String file_id);
-    String deleteFile(String filename, String file_id);
+    int deleteFile(String file_id);
 }

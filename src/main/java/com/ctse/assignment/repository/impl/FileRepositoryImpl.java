@@ -45,7 +45,9 @@ public class FileRepositoryImpl implements FileRepository {
     }
 
     @Override
-    public String deleteFile(String filename, String file_id) {
-        return null;
+    public int deleteFile(String file_id) {
+        String sql = "DELETE FROM file WHERE file_id=?";
+        int response = jdbcTemplate.update(sql, file_id);
+        return response;
     }
 }
